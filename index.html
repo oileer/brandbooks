@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Books — Euller Lolato</title>
+<meta name="description" content="Portal de Brand Books dos clientes de Euller Lolato. Acesse os guias de identidade visual e diretrizes de marca.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0A0A;
+    --bg-soft: #111111;
+    --bg-card: #141414;
+    --line: #222222;
+    --line-soft: #1a1a1a;
+    --bone: #F5F5F0;
+    --muted: #8a8a85;
+    --muted-2: #5c5c58;
+    --orange: #FF4500;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--bone);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  /* ---- Animated background ---- */
+  .bg-glow {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .bg-glow::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,69,0,0.06) 0%, transparent 70%);
+    top: -200px;
+    right: -100px;
+    animation: float-glow 12s ease-in-out infinite alternate;
+  }
+  .bg-glow::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,69,0,0.04) 0%, transparent 70%);
+    bottom: -150px;
+    left: -100px;
+    animation: float-glow 15s ease-in-out infinite alternate-reverse;
+  }
+  @keyframes float-glow {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(60px, 40px) scale(1.15); }
+  }
+
+  /* ---- Noise texture overlay ---- */
+  .noise {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 128px 128px;
+  }
+
+  /* ---- Layout ---- */
+  .container {
+    position: relative;
+    z-index: 2;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 32px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  /* ---- Header ---- */
+  .header {
+    margin-bottom: 80px;
+    animation: fade-up 0.8s ease-out both;
+  }
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted-2);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .eyebrow .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--orange);
+    animation: pulse-dot 2.5s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
+  }
+  .header h1 {
+    font-family: 'Audiowide', sans-serif;
+    font-weight: 400;
+    font-size: clamp(42px, 8vw, 80px);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+  }
+  .header h1 .accent-text {
+    background: linear-gradient(135deg, var(--orange), #ff8a3d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .header .subtitle {
+    margin-top: 20px;
+    font-size: clamp(15px, 2vw, 18px);
+    color: var(--muted);
+    max-width: 48ch;
+    font-weight: 300;
+  }
+
+  /* ---- Accent line ---- */
+  .accent-line {
+    height: 2px;
+    width: 64px;
+    border: 0;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--orange), rgba(255,69,0,0));
+    margin: 28px 0 0;
+  }
+
+  /* ---- Cards grid ---- */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 32px;
+    text-decoration: none;
+    color: var(--bone);
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    overflow: hidden;
+    animation: fade-up 0.8s ease-out both;
+  }
+  .card:nth-child(1) { animation-delay: 0.15s; }
+  .card:nth-child(2) { animation-delay: 0.3s; }
+  .card:nth-child(3) { animation-delay: 0.45s; }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(255,69,0,0.04) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .card:hover::before {
+    opacity: 1;
+  }
+  .card.active {
+    border-color: rgba(255,69,0,0.25);
+    cursor: pointer;
+  }
+  .card.active:hover {
+    border-color: rgba(255,69,0,0.5);
+    transform: translateY(-4px);
+    box-shadow:
+      0 8px 32px rgba(255,69,0,0.08),
+      0 2px 8px rgba(0,0,0,0.4);
+  }
+  .card.coming-soon {
+    opacity: 0.45;
+    cursor: default;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .card-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #000;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .card-logo img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+  }
+  .card-logo .placeholder-icon {
+    font-family: 'Audiowide', sans-serif;
+    font-size: 18px;
+    color: var(--muted-2);
+  }
+
+  .badge {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .badge.live {
+    background: rgba(255,69,0,0.12);
+    color: var(--orange);
+    border: 1px solid rgba(255,69,0,0.2);
+  }
+  .badge.soon {
+    background: rgba(138,138,133,0.08);
+    color: var(--muted-2);
+    border: 1px solid var(--line);
+  }
+
+  .card-name {
+    font-family: 'Audiowide', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .card-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    border-top: 1px solid var(--line-soft);
+  }
+  .card-meta {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted-2);
+  }
+  .card-arrow {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255,69,0,0.08);
+    border: 1px solid rgba(255,69,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    color: var(--orange);
+    font-size: 14px;
+  }
+  .card.active:hover .card-arrow {
+    background: var(--orange);
+    color: #000;
+    transform: translateX(3px);
+  }
+
+  /* ---- Footer ---- */
+  .portal-footer {
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid var(--line-soft);
+    padding: 28px 32px;
+    text-align: center;
+  }
+  .portal-footer p {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted-2);
+  }
+  .portal-footer a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  .portal-footer a:hover {
+    color: var(--bone);
+  }
+
+  /* ---- Animations ---- */
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 640px) {
+    .container {
+      padding: 0 20px;
+    }
+    .header {
+      margin-bottom: 48px;
+    }
+    .cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+<div class="noise"></div>
+
+<div class="container">
+  <div class="header">
+    <div class="eyebrow"><span class="dot"></span> Euller Lolato · Brand Books</div>
+    <h1>BRAND<br><span class="accent-text">BOOKS</span></h1>
+    <p class="subtitle">Guias de identidade visual, diretrizes de marca e linguagem dos clientes da consultoria.</p>
+    <hr class="accent-line">
+  </div>
+
+  <div class="cards">
+
+    <!-- KODY -->
+    <a href="kody/" class="card active" id="card-kody">
+      <div class="card-header">
+        <div class="card-logo">
+          <img src="kody/logos/branca%20BG.png" alt="Logo Kody">
+        </div>
+        <span class="badge live">Ativo</span>
+      </div>
+      <div class="card-name">KODY</div>
+      <p class="card-desc">Consultoria de crescimento digital para negócios locais. Diagnóstico de gargalos antes de soluções.</p>
+      <div class="card-footer">
+        <span class="card-meta">v1.0 · 2026</span>
+        <div class="card-arrow">→</div>
+      </div>
+    </a>
+
+    <!-- CONSCIÊNCIA APLICADA -->
+    <div class="card coming-soon" id="card-consciencia">
+      <div class="card-header">
+        <div class="card-logo">
+          <span class="placeholder-icon">CA</span>
+        </div>
+        <span class="badge soon">Em breve</span>
+      </div>
+      <div class="card-name">CONSCIÊNCIA APLICADA</div>
+      <p class="card-desc">Marca pessoal focada em comportamento humano, autoconhecimento e desenvolvimento pessoal.</p>
+      <div class="card-footer">
+        <span class="card-meta">@theoileer</span>
+        <div class="card-arrow" style="opacity:0.3">→</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="portal-footer">
+  <p>Euller Lolato · <a href="https://eullerlolato.com" target="_blank" rel="noopener">eullerlolato.com</a> · 2026</p>
+</div>
+
+</body>
+</html>

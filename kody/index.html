@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KODY — Brand Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0A0A;
+    --bg-soft:#111111;
+    --bg-card:#141414;
+    --line:#222222;
+    --line-soft:#1a1a1a;
+    --bone:#F5F5F0;
+    --muted:#8a8a85;
+    --muted-2:#5c5c58;
+    --orange:#FF4500;
+    --maxw:980px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--bone);
+    font-family:'Inter',system-ui,sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  h1,h2,h3,.display{font-family:'Audiowide',sans-serif;font-weight:400;letter-spacing:.01em}
+
+  /* ---- accent line (a regra do laranja: laranja só como traço) ---- */
+  .accent{
+    height:2px;width:64px;border:0;border-radius:2px;
+    background:linear-gradient(90deg,var(--orange),rgba(255,69,0,0));
+    margin:0 0 28px;
+  }
+
+  /* ---- section scaffolding ---- */
+  section{padding:96px 0;border-top:1px solid var(--line-soft)}
+  .eyebrow{
+    font-family:'Inter';font-size:12px;font-weight:600;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--muted-2);margin-bottom:18px;
+    display:flex;align-items:center;gap:14px;
+  }
+  .eyebrow .num{color:var(--orange);font-family:'Audiowide'}
+  section h2{font-size:clamp(28px,4vw,42px);line-height:1.1;margin-bottom:22px}
+  .lead{font-size:18px;color:var(--muted);max-width:62ch}
+
+  /* ---- HERO ---- */
+  .hero{
+    min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+    border-top:0;padding:120px 0 96px;position:relative;overflow:hidden;
+    background:
+      linear-gradient(90deg,#0A0A0A 0%,rgba(10,10,10,.78) 38%,rgba(10,10,10,.30) 72%,rgba(10,10,10,.55) 100%),
+      url('logos/varia%C3%A7%C3%B5es/fuma%C3%A7a%20glow.jpeg') center right / cover no-repeat,
+      #0A0A0A;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(to bottom,transparent 70%,#0A0A0A 100%);
+  }
+  .hero .wrap{position:relative;z-index:1}
+  .hero-logo{width:148px;height:auto;margin-bottom:40px;filter:drop-shadow(0 8px 40px rgba(0,0,0,.6))}
+  .hero h1{
+    font-size:clamp(64px,13vw,148px);line-height:.9;letter-spacing:.02em;
+    text-shadow:0 4px 32px rgba(0,0,0,.9),0 2px 8px rgba(0,0,0,1);
+  }
+  .hero .sub{
+    margin-top:24px;font-size:clamp(15px,2vw,19px);color:var(--bone);font-weight:500;
+    letter-spacing:.06em;max-width:54ch;
+    text-shadow:0 2px 16px rgba(0,0,0,1),0 1px 4px rgba(0,0,0,1);
+  }
+  .hero .tag{
+    margin-top:40px;font-family:'Audiowide';font-size:clamp(16px,2.4vw,24px);
+    color:var(--bone);line-height:1.4;max-width:22ch;
+    text-shadow:0 2px 24px rgba(0,0,0,1),0 1px 6px rgba(0,0,0,1);
+    border-left:2px solid var(--orange);padding-left:18px;
+    background:rgba(10,10,10,.45);backdrop-filter:blur(4px);
+    padding:14px 18px;border-radius:0 8px 8px 0;display:inline-block;
+  }
+  .meta-bar{
+    border-bottom:1px solid var(--line);
+  }
+  .meta-bar .wrap{
+    display:flex;justify-content:space-between;gap:18px;
+    padding-top:18px;padding-bottom:18px;
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-2);
+  }
+
+  /* ---- positioning ---- */
+  .quote{
+    font-family:'Audiowide';font-size:clamp(22px,3.4vw,34px);line-height:1.3;
+    color:var(--bone);margin:8px 0 0;max-width:20ch;
+  }
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+  .card{
+    background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:28px;
+  }
+  .card h3{font-family:'Inter';font-weight:600;font-size:13px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--muted-2);margin-bottom:14px}
+  .card.is{border-left:2px solid var(--orange)}
+  .card p{color:var(--bone);font-size:16px}
+  .card.not p{color:var(--muted)}
+
+  /* ---- logo showcase ---- */
+  .logo-stage{
+    background:#000;border:1px solid var(--line);border-radius:18px;
+    display:flex;align-items:center;justify-content:center;padding:72px;margin-top:8px;
+  }
+  .logo-stage img{width:min(360px,70%);height:auto}
+  .logo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:24px}
+  .swatch-logo{
+    border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  .swatch-logo .frame{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:36px}
+  .swatch-logo .frame img{width:74%;height:auto}
+  .frame.dark{background:#000}
+  .frame.light{background:var(--bone)}
+  .swatch-logo .cap{
+    font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+    padding:14px 18px;border-top:1px solid var(--line);background:var(--bg-card);
+  }
+
+  /* ---- avatares / instagram profile mock ---- */
+  .ig{max-width:470px;margin:8px auto 0;background:#000;border:1px solid var(--line);
+    border-radius:18px;padding:28px 26px;font-family:'Inter'}
+  .ig-top{display:flex;align-items:center;gap:28px}
+  .ig-ava{width:88px;height:88px;border-radius:50%;flex:0 0 auto;padding:3px;
+    background:conic-gradient(from 200deg,#FF4500,#ff8a3d,#FF4500,#7a2200,#FF4500)}
+  .ig-ava img{width:100%;height:100%;border-radius:50%;object-fit:cover;
+    border:3px solid #000;object-position:center}
+  .ig-stats{display:flex;gap:26px;flex:1}
+  .ig-stat{text-align:center}
+  .ig-stat b{display:block;font-size:17px;color:var(--bone);font-weight:700}
+  .ig-stat span{font-size:13px;color:var(--muted)}
+  .ig-handle{display:flex;align-items:center;gap:8px;margin-top:18px}
+  .ig-handle .h{font-size:15px;font-weight:600;color:var(--bone)}
+  .ig-handle .v{width:15px;height:15px;border-radius:50%;background:var(--orange);
+    display:inline-flex;align-items:center;justify-content:center;font-size:9px;color:#000;font-weight:700}
+  .ig-bio{margin-top:6px;font-size:14px;line-height:1.5;color:var(--bone)}
+  .ig-bio .name{font-weight:600}
+  .ig-bio .muted{color:var(--muted)}
+  .ig-bio .link{color:#5a9bd8}
+  .ig-btns{display:flex;gap:8px;margin-top:18px}
+  .ig-btns .b{flex:1;text-align:center;font-size:13px;font-weight:600;padding:8px 0;border-radius:8px}
+  .ig-btns .primary{background:var(--orange);color:#000}
+  .ig-btns .ghost{background:#262626;color:var(--bone)}
+  .ig-cap{text-align:center;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted-2);margin-top:18px}
+
+  /* avatar options */
+  .ava-row{display:flex;flex-wrap:wrap;gap:26px;justify-content:center;margin-top:48px}
+  .ava-opt{text-align:center}
+  .ava-opt .c{width:96px;height:96px;border-radius:50%;overflow:hidden;border:1px solid var(--line);
+    margin:0 auto;background:#000}
+  .ava-opt .c img{width:100%;height:100%;object-fit:cover}
+  .ava-opt.pick .c{border:2px solid var(--orange)}
+  .ava-opt .l{margin-top:12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .ava-opt.pick .l{color:var(--orange)}
+
+  /* ---- the orange rule ---- */
+  .rule-box{
+    margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:0;
+    border:1px solid var(--line);border-radius:16px;overflow:hidden;
+  }
+  .rule-box>div{padding:32px}
+  .rule-do{background:var(--bg-card)}
+  .rule-dont{background:#0d0606;border-left:1px solid var(--line)}
+  .rule-box h3{font-family:'Inter';font-weight:600;font-size:13px;letter-spacing:.16em;
+    text-transform:uppercase;margin-bottom:18px}
+  .rule-do h3{color:var(--orange)}
+  .rule-dont h3{color:var(--muted)}
+  .rule-box ul{list-style:none}
+  .rule-box li{padding:9px 0;font-size:15px;border-bottom:1px solid var(--line-soft);color:var(--bone)}
+  .rule-box li:last-child{border-bottom:0}
+  .rule-dont li{color:var(--muted)}
+  .rule-box li::before{margin-right:10px}
+  .rule-do li::before{content:"—";color:var(--orange)}
+  .rule-dont li::before{content:"✕";color:var(--muted-2)}
+  .cap-rule{margin-top:18px;font-size:13px;color:var(--muted-2);font-style:italic}
+
+  /* ---- colors ---- */
+  .palette{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:8px}
+  .color{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .color .chip{height:130px}
+  .color .info{padding:16px 18px;background:var(--bg-card)}
+  .color .name{font-family:'Audiowide';font-size:14px;margin-bottom:4px}
+  .color .hex{font-size:12px;letter-spacing:.08em;color:var(--muted)}
+  .color .role{font-size:11px;color:var(--muted-2);margin-top:8px;text-transform:uppercase;letter-spacing:.1em}
+
+  /* ---- typography ---- */
+  .type-card{background:var(--bg-card);border:1px solid var(--line);border-radius:16px;padding:36px;margin-top:16px}
+  .type-card+.type-card{margin-top:16px}
+  .type-name{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px;
+    border-bottom:1px solid var(--line);padding-bottom:14px}
+  .type-name .n{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .type-name .role{font-size:12px;color:var(--muted-2)}
+  .type-spec-title{font-family:'Audiowide';font-size:clamp(34px,6vw,64px);line-height:1;color:var(--bone)}
+  .type-spec-title .o{color:var(--orange)}
+  .type-spec-body{font-size:18px;color:var(--bone);font-weight:300}
+  .type-spec-body b{font-weight:600}
+  .glyphs{margin-top:16px;font-size:14px;letter-spacing:.18em;color:var(--muted-2)}
+
+  /* ---- voice ---- */
+  .voice-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px}
+  .lex{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:26px}
+  .lex h3{font-family:'Inter';font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted-2);margin-bottom:18px}
+  .pills{display:flex;flex-wrap:wrap;gap:10px}
+  .pill{border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:14px;color:var(--bone)}
+  .pill.use{border-color:rgba(255,69,0,.4)}
+  .avoid li{list-style:none;padding:9px 0;font-size:14px;color:var(--muted);border-bottom:1px solid var(--line-soft)}
+  .avoid li:last-child{border:0}
+  .avoid li::before{content:"✕ ";color:var(--muted-2)}
+  .mech{margin-top:24px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .step{background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:20px}
+  .step .k{font-family:'Audiowide';font-size:12px;color:var(--orange);letter-spacing:.08em}
+  .step .t{font-family:'Audiowide';font-size:16px;margin:8px 0 8px}
+  .step .d{font-size:13px;color:var(--muted)}
+
+  /* ---- pillars ---- */
+  .pillars{display:grid;grid-template-columns:1fr;gap:0;margin-top:8px;
+    border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--bg-card)}
+  .pillar{display:grid;grid-template-columns:64px 1fr;gap:0;border-bottom:1px solid var(--line)}
+  .pillar:last-child{border-bottom:0}
+  .pillar .pn{font-family:'Audiowide';font-size:18px;color:var(--muted-2);
+    display:flex;align-items:center;justify-content:center;border-right:1px solid var(--line)}
+  .pillar .pc{padding:22px 26px}
+  .pillar .pt{font-family:'Audiowide';font-size:18px;margin-bottom:6px}
+  .pillar .pd{font-size:15px;color:var(--muted)}
+
+  /* ---- application / posts ---- */
+  .app-lead{margin-bottom:28px}
+  .app-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .theme{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .theme .tt{font-family:'Audiowide';font-size:15px;margin-bottom:8px}
+  .theme .td{font-size:13px;color:var(--muted);margin-bottom:14px}
+  .theme code{display:block;font-size:12px;color:var(--muted-2);font-family:ui-monospace,monospace;
+    background:var(--bg-soft);border:1px solid var(--line-soft);border-radius:8px;padding:8px 10px;margin-top:6px}
+  .avoid-banner{margin-top:22px;border:1px solid #2a1010;background:#0d0606;border-radius:12px;
+    padding:18px 22px;font-size:14px;color:var(--muted)}
+  .avoid-banner b{color:var(--bone)}
+
+  /* ---- footer ---- */
+  footer{border-top:1px solid var(--line);padding:72px 0 96px;text-align:center}
+  footer .fl{width:64px;margin:0 auto 28px;display:block}
+  footer .fn{font-family:'Audiowide';font-size:24px;letter-spacing:.04em}
+  footer .fc{margin-top:18px;font-size:13px;color:var(--muted);line-height:1.9}
+  footer .fc a{color:var(--bone);text-decoration:none}
+  footer .stamp{margin-top:28px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-2)}
+
+  @media(max-width:760px){
+    section{padding:64px 0}
+    .two,.rule-box,.voice-grid{grid-template-columns:1fr}
+    .palette,.mech{grid-template-columns:repeat(2,1fr)}
+    .gallery,.app-grid{grid-template-columns:1fr 1fr}
+    .logo-grid{grid-template-columns:1fr}
+    .hero .meta{position:static;margin-top:48px;flex-direction:column;gap:8px}
+  }
+  @media print{
+    body{background:#fff}
+    section,.hero{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap">
+    <h1>KODY</h1>
+    <p class="sub">Consultoria de Crescimento Digital para Negócios Locais</p>
+    <p class="tag">O problema não é falta de marketing.<br>É um gargalo de crescimento.</p>
+  </div>
+</header>
+<div class="meta-bar">
+  <div class="wrap">
+    <span>Brand Book v1.0</span>
+    <span>São Miguel do Oeste · SC</span>
+    <span>2026</span>
+  </div>
+</div>
+
+<!-- ================= 01 ESSÊNCIA ================= -->
+<section id="essencia">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">01</span> Essência</div>
+    <hr class="accent">
+    <h2>O que a Kody é</h2>
+    <p class="lead">Identificamos o principal gargalo que impede um negócio de crescer digitalmente e implementamos a solução adequada para corrigi-lo. Autoridade por diagnóstico — não por promessa.</p>
+    <p class="quote">Sintoma vs. causa.<br>Diagnóstico antes de solução.</p>
+    <div class="two">
+      <div class="card is">
+        <h3>O que somos</h3>
+        <p>Diagnóstico e implementação. Identificamos a restrição real de crescimento e corrigimos com a solução específica — que muda por empresa.</p>
+      </div>
+      <div class="card not">
+        <h3>O que não somos</h3>
+        <p>Não somos gestor de tráfego, agência de posts, dev de sites ou especialista em automação. Isso são ferramentas — não a função.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 O SÍMBOLO ================= -->
+<section id="logo">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">02</span> O Símbolo</div>
+    <hr class="accent">
+    <h2>A marca</h2>
+    <p class="lead">Uma figura em arranque — movimento, direção, avanço. O traço diagonal afiado corta a forma e carrega o único ponto de cor da identidade: o gradiente laranja. É o vetor do crescimento.</p>
+    <div class="logo-stage">
+      <img src="logos/branca%20BG.png" alt="Logo Kody — versão clara">
+    </div>
+    <div class="logo-grid">
+      <div class="swatch-logo">
+        <div class="frame dark"><img src="logos/branca%20BG.png" alt="Logo clara sobre fundo escuro"></div>
+        <div class="cap">Versão clara · fundos escuros</div>
+      </div>
+      <div class="swatch-logo">
+        <div class="frame light"><img src="logos/preta%20BG.png" alt="Logo escura sobre fundo claro"></div>
+        <div class="cap">Versão escura · fundos claros</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 AVATARES ================= -->
+<section id="avatares">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">03</span> Avatares</div>
+    <hr class="accent">
+    <h2>Foto de perfil</h2>
+    <p class="lead">As versões texturizadas do símbolo são os avatares da marca — feitas para a foto de perfil do Instagram. Centradas no traço, vivem bem no recorte circular e seguram presença mesmo em miniatura.</p>
+
+    <div class="ig">
+      <div class="ig-top">
+        <div class="ig-ava"><img src="logos/varia%C3%A7%C3%B5es/fuma%C3%A7a%20glow.jpeg" alt="Avatar Kody"></div>
+        <div class="ig-stats">
+          <div class="ig-stat"><b>32</b><span>posts</span></div>
+          <div class="ig-stat"><b>1.248</b><span>seguidores</span></div>
+          <div class="ig-stat"><b>97</b><span>seguindo</span></div>
+        </div>
+      </div>
+      <div class="ig-handle"><span class="h">eullerlolato_</span><span class="v">✓</span></div>
+      <div class="ig-bio">
+        <span class="name">KODY · Crescimento Digital</span><br>
+        <span class="muted">Identifico o gargalo que trava seu negócio.</span><br>
+        <span class="muted">Diagnóstico antes de solução.</span><br>
+        <span class="link">eullerlolato.com</span>
+      </div>
+      <div class="ig-btns">
+        <span class="b primary">Seguir</span>
+        <span class="b ghost">Mensagem</span>
+        <span class="b ghost">···</span>
+      </div>
+      <div class="ig-cap">Simulação — foto de perfil @eullerlolato_</div>
+    </div>
+
+    <div class="ava-row">
+      <div class="ava-opt pick">
+        <div class="c"><img src="logos/varia%C3%A7%C3%B5es/fuma%C3%A7a%20glow.jpeg" alt="Fumaça glow"></div>
+        <div class="l">Fumaça · glow</div>
+      </div>
+      <div class="ava-opt">
+        <div class="c"><img src="logos/varia%C3%A7%C3%B5es/fuma%C3%A7a%20fraco.jpeg" alt="Fumaça sutil"></div>
+        <div class="l">Fumaça · sutil</div>
+      </div>
+      <div class="ava-opt">
+        <div class="c"><img src="logos/varia%C3%A7%C3%B5es/metal%20glow.jpeg" alt="Metal glow"></div>
+        <div class="l">Metal · glow</div>
+      </div>
+      <div class="ava-opt">
+        <div class="c"><img src="logos/varia%C3%A7%C3%B5es/metal%20fundo%20preto.jpeg" alt="Metal fundo preto"></div>
+        <div class="l">Metal · preto</div>
+      </div>
+      <div class="ava-opt">
+        <div class="c"><img src="logos/varia%C3%A7%C3%B5es/metal%20fundo%20cinza.jpeg" alt="Metal fundo cinza"></div>
+        <div class="l">Metal · cinza</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 04 REGRA DO LARANJA ================= -->
+<section id="laranja">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">04</span> A Regra do Laranja</div>
+    <hr class="accent">
+    <h2>#FF4500 é acento. Nunca protagonista.</h2>
+    <p class="lead">O laranja existe como detalhe mínimo — exclusivamente como gradiente sutil no traço diagonal da logo. Presença máxima: ≤ 10% da composição. Na dúvida, menos é mais.</p>
+    <div class="rule-box">
+      <div class="rule-do">
+        <h3>Usar como</h3>
+        <ul>
+          <li>Gradiente pontual no traço da logo</li>
+          <li>Linha ou detalhe estrutural de destaque</li>
+          <li>Acento geométrico isolado e discreto</li>
+        </ul>
+      </div>
+      <div class="rule-dont">
+        <h3>Nunca usar como</h3>
+        <ul>
+          <li>Preenchimento de fundo, botão ou bloco</li>
+          <li>Cor de texto</li>
+          <li>Borda ou contorno dominante</li>
+          <li>Elemento decorativo espalhado</li>
+        </ul>
+      </div>
+    </div>
+    <p class="cap-rule">A composição é dark e sóbria. O laranja só aparece para guiar o olho — um vetor, não uma cor de fundo.</p>
+  </div>
+</section>
+
+<!-- ================= 05 CORES ================= -->
+<section id="cores">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">05</span> Cores</div>
+    <hr class="accent">
+    <h2>Paleta</h2>
+    <div class="palette">
+      <div class="color">
+        <div class="chip" style="background:#0A0A0A;border-bottom:1px solid #222"></div>
+        <div class="info"><div class="name">Preto Kody</div><div class="hex">#0A0A0A</div><div class="role">Fundo / base</div></div>
+      </div>
+      <div class="color">
+        <div class="chip" style="background:#F5F5F0"></div>
+        <div class="info"><div class="name">Osso</div><div class="hex">#F5F5F0</div><div class="role">Texto / contraste</div></div>
+      </div>
+      <div class="color">
+        <div class="chip" style="background:#8a8a85"></div>
+        <div class="info"><div class="name">Cinza</div><div class="hex">#8A8A85</div><div class="role">Texto secundário</div></div>
+      </div>
+      <div class="color">
+        <div class="chip" style="background:linear-gradient(135deg,#FF4500,#0A0A0A)"></div>
+        <div class="info"><div class="name">Laranja</div><div class="hex">#FF4500</div><div class="role">Acento ≤ 10%</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06 TIPOGRAFIA ================= -->
+<section id="tipografia">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">06</span> Tipografia</div>
+    <hr class="accent">
+    <h2>Tipos</h2>
+    <div class="type-card">
+      <div class="type-name"><span class="n">Audiowide</span><span class="role">Títulos · marca · números</span></div>
+      <div class="type-spec-title">Gargal<span class="o">o</span> de crescimento</div>
+      <div class="glyphs">ABCDEFG · abcdefg · 0123456789</div>
+    </div>
+    <div class="type-card">
+      <div class="type-name"><span class="n">Inter</span><span class="role">Corpo · leitura · interface</span></div>
+      <p class="type-spec-body">Autoridade por <b>especificidade</b>, não por arrogância. Texto técnico, direto e legível em qualquer tamanho — do título ao rodapé de um carrossel.</p>
+      <div class="glyphs">300 Light · 400 Regular · 500 Medium · 600 SemiBold · 700 Bold</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 07 TOM DE VOZ ================= -->
+<section id="tom">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">07</span> Tom de Voz</div>
+    <hr class="accent">
+    <h2>Como a Kody fala</h2>
+    <p class="lead">Técnico, direto, diagnóstico. Autoridade por especificidade — sem motivação vazia, sem promessa de guru.</p>
+    <div class="voice-grid">
+      <div class="lex">
+        <h3>Dicionário de marca</h3>
+        <div class="pills">
+          <span class="pill use">Gargalo</span>
+          <span class="pill use">Restrição</span>
+          <span class="pill use">Diagnóstico</span>
+          <span class="pill use">Os 5 Pilares</span>
+          <span class="pill use">Sintoma vs. causa</span>
+        </div>
+      </div>
+      <div class="lex">
+        <h3>Evitar</h3>
+        <ul class="avoid">
+          <li>Linguagem de agência ("engajamento" como fim)</li>
+          <li>Promessas vagas ("mais clientes garantidos")</li>
+          <li>Guru / coach motivacional</li>
+          <li>CTA genérico ("comenta aqui", "chama no DM")</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mech">
+      <div class="step"><div class="k">01</div><div class="t">Gancho</div><div class="d">Invalida o esforço comum na primeira frase.</div></div>
+      <div class="step"><div class="k">02</div><div class="t">Contraste</div><div class="d">90% fazem X errado vs. quem cresce faz Y.</div></div>
+      <div class="step"><div class="k">03</div><div class="t">Contexto</div><div class="d">Especificidade: pilar, dado, exemplo real.</div></div>
+      <div class="step"><div class="k">04</div><div class="t">Fechamento</div><div class="d">Seco. CTA explícito só em post de oferta.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 08 PILARES ================= -->
+<section id="pilares">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">08</span> Framework</div>
+    <hr class="accent">
+    <h2>Os 5 Pilares do diagnóstico</h2>
+    <p class="lead">A grade que revela onde está a restrição. O gargalo está sempre em um deles.</p>
+    <div class="pillars">
+      <div class="pillar"><div class="pn">01</div><div class="pc"><div class="pt">Posicionamento</div><div class="pd">O mercado sabe o que a empresa resolve?</div></div></div>
+      <div class="pillar"><div class="pn">02</div><div class="pc"><div class="pt">Autoridade</div><div class="pd">O mercado confia o suficiente para comprar?</div></div></div>
+      <div class="pillar"><div class="pn">03</div><div class="pc"><div class="pt">Aquisição</div><div class="pd">Existe processo consistente de geração de oportunidades?</div></div></div>
+      <div class="pillar"><div class="pn">04</div><div class="pc"><div class="pt">Conversão</div><div class="pd">As oportunidades viram clientes? Em que taxa?</div></div></div>
+      <div class="pillar"><div class="pn">05</div><div class="pc"><div class="pt">Operação</div><div class="pd">A empresa cresce sem quebrar a estrutura?</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 09 APLICAÇÃO ================= -->
+<section id="aplicacao">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">09</span> Aplicação</div>
+    <hr class="accent">
+    <h2>Direção visual dos posts</h2>
+    <p class="lead app-lead">Mecânica: fundo dark atmosférico + logo + texto. A imagem precisa transmitir autoridade e nível — sóbrio, premium, com espaço negativo. Buscar referências em inglês.</p>
+    <div class="app-grid">
+      <div class="theme"><div class="tt">Arquitetura</div><div class="td">O nível a alcançar.</div><code>dark minimal architecture</code><code>brutalist building night</code></div>
+      <div class="theme"><div class="tt">Texturas dark</div><div class="td">Espaço negativo puro.</div><code>dark gradient texture</code><code>black smoke background</code></div>
+      <div class="theme"><div class="tt">Natureza</div><div class="td">A jornada / o gargalo.</div><code>foggy mountain dark</code><code>lone road night</code></div>
+    </div>
+    <div class="avoid-banner"><b>Evitar:</b> grafite, glitch pesado, neon colorido, estática youth/streetwear. Essa é a linguagem do público jovem — não do empresário.</div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <img class="fl" src="logos/branca%20BG.png" alt="Kody">
+    <div class="fn">KODY</div>
+    <div class="fc">
+      @eullerlolato_ · eullerlolato.com<br>
+      WhatsApp comercial <a href="#">(49) 92001-0644</a> · São Miguel do Oeste/SC
+    </div>
+    <div class="stamp">Brand Book · v1.0 · 2026</div>
+  </div>
+</footer>
+
+</body>
+</html>
