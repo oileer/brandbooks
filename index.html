@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vendor/lenis.css">
 <style>
   :root {
     --bg: #0A0A0A;
@@ -22,7 +23,9 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  /* Com o Lenis no comando (<html class="lenis">) o smooth nativo precisa sair
+     do caminho; sem ele — reduced-motion, JS off — o nativo segue valendo. */
+  html:not(.lenis) { scroll-behavior: smooth; }
 
   body {
     background: var(--bg);
@@ -43,12 +46,16 @@
   /* ---- Fumaça glow hero bg ---- */
   .hero-bg {
     position: fixed;
-    inset: 0;
+    /* folga em cima e embaixo: a fumaça deriva até 6% com o scroll e a borda
+       da imagem não pode entrar em cena */
+    inset: -8% 0;
     pointer-events: none;
     z-index: 0;
     background: url('kody/logos/variações/fumaça glow.jpeg') center right / cover no-repeat;
     opacity: 0.2;
     transition: opacity 0.7s ease;
+    transform: translate3d(0, var(--parallax-y, 0%), 0);
+    will-change: transform;
     mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.3) 55%, rgba(0,0,0,0) 100%);
     -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.3) 55%, rgba(0,0,0,0) 100%);
   }
@@ -306,6 +313,42 @@
 <div class="portal-footer">
   <p>Euller Lolato · <a href="https://eullerlolato.com" target="_blank" rel="noopener">eullerlolato.com</a> · 2026</p>
 </div>
+
+<script src="vendor/lenis.min.js"></script>
+<script>
+  // Scroll suave + deriva da fumaça de fundo.
+  // Quem pediu menos movimento fica com o scroll nativo e a fumaça parada.
+  (() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    new Lenis({
+      smoothWheel: true,
+      lerp: 0.1,
+      autoRaf: true,
+      anchors: true,
+      allowNestedScroll: true,
+      stopInertiaOnNavigate: true,
+    });
+
+    // A fumaça é `position: fixed`, então não tem posição própria na página
+    // para medir — a deriva vem do progresso total do scroll (0 a 1).
+    const smoke = document.querySelector('.hero-bg');
+    if (!smoke) return;
+
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = max > 0 ? window.scrollY / max : 0;
+      smoke.style.setProperty('--parallax-y', `${(progress * 6).toFixed(2)}%`);
+    };
+
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
+    update();
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll, { passive: true });
+  })();
+</script>
 
 </body>
 </html>
