@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nexora · Brand Book</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/icon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#04070D;--bg-soft:#0B1120;--bg-card:#0B1120;--line:#1D2A45;--ink:#F7F9FF;--muted:#78849A;--muted-2:#5C6A86;--accent:#1475FF;--on:#fff;--maxw:980px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+h1,h2,h3,.display{font-family:'Inter',sans-serif;font-weight:800;letter-spacing:-.02em}
+.accent{height:3px;width:64px;border-radius:2px;background:linear-gradient(90deg,var(--accent),transparent);margin:0 0 26px}
+section{padding:88px 0;border-top:1px solid var(--line)}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--muted-2);margin-bottom:16px;display:flex;gap:14px}
+.eyebrow .num{color:var(--accent)}
+section h2{font-size:clamp(28px,4vw,42px);line-height:1.1;margin-bottom:20px}
+.lead{font-size:18px;color:var(--muted);max-width:62ch}
+.hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;padding:110px 0 80px;border-top:0;position:relative;overflow:hidden;background:radial-gradient(900px 480px at 85% 5%,rgba(20,117,255,.28),transparent 60%),#04070D}
+.hero img.mark{width:84px;height:84px;object-fit:contain;margin-bottom:34px}
+.hero h1{font-size:clamp(56px,12vw,128px);line-height:.92}
+.hero .sub{margin-top:22px;font-size:clamp(16px,2vw,20px);color:var(--muted);max-width:50ch}
+.hero .tag{margin-top:34px;border-left:3px solid var(--accent);padding:6px 0 6px 18px;font-size:clamp(16px,2.2vw,22px);max-width:34ch;font-family:'Inter',sans-serif}
+.meta-bar{border-bottom:1px solid var(--line)}
+.meta-bar .wrap{display:flex;justify-content:space-between;gap:16px;padding-top:16px;padding-bottom:16px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-2)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
+.card{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:26px}
+.card h3{font-family:'Inter';font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);margin-bottom:12px}
+.card.is{border-left:3px solid var(--accent)}
+.card p,.card li{font-size:16px}
+.card ul{list-style:none}
+.card li{padding:8px 0;border-bottom:1px solid var(--line)}
+.card li:last-child{border:0}
+.logo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:8px}
+.logo-frame{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.logo-frame .f{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;padding:34px}
+.logo-frame .f img{max-width:70%;max-height:100%;object-fit:contain}
+.logo-frame .cap{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:12px 16px;border-top:1px solid var(--line);background:var(--bg-card)}
+.palette{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.color{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.color .chip{height:116px}
+.color .info{padding:14px 16px;background:var(--bg-card)}
+.color .name{font-family:'Inter',sans-serif;font-size:15px;margin-bottom:2px}
+.color .hex{font-size:12px;letter-spacing:.08em;color:var(--muted)}
+.color .role{font-size:11px;color:var(--muted-2);margin-top:6px;text-transform:uppercase;letter-spacing:.1em}
+.grads{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+.grad{height:88px;border-radius:14px;border:1px solid var(--line);display:flex;align-items:flex-end;padding:10px 14px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#fff}
+.type-card{background:var(--bg-card);border:1px solid var(--line);border-radius:16px;padding:32px;margin-top:14px}
+.type-name{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:18px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.type-big{font-size:clamp(34px,6vw,60px);line-height:1}
+.type-big .o{color:var(--accent)}
+.type-body{font-size:18px;font-weight:300}
+.glyphs{margin-top:14px;font-size:14px;letter-spacing:.18em;color:var(--muted-2)}
+.voice{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.pills{display:flex;flex-wrap:wrap;gap:10px}
+.pill{border:1px solid var(--line);border-radius:999px;padding:7px 15px;font-size:14px}
+.pill.use{border-color:var(--accent)}
+.avoid li{list-style:none;padding:8px 0;font-size:14px;color:var(--muted);border-bottom:1px solid var(--line)}
+.avoid li:last-child{border:0}
+.avoid li::before{content:"✕ ";color:var(--muted-2)}
+.ex{margin-top:20px;background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:20px 22px;font-size:15px}
+.ex b{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.ex.bad b{color:var(--muted-2)}
+.ex.bad{color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:64px 0 88px;text-align:center}
+footer img{width:56px;margin:0 auto 22px;display:block}
+footer .fn{font-family:'Inter',sans-serif;font-size:22px}
+footer .fc{margin-top:14px;font-size:13px;color:var(--muted);line-height:1.9}
+footer .stamp{margin-top:24px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-2)}
+@media(max-width:760px){section{padding:60px 0}.two,.voice,.logo-grid,.grads{grid-template-columns:1fr}.palette{grid-template-columns:repeat(2,1fr)}}
+</style></head><body>
+<header class="hero"><div class="wrap">
+<img class="mark" src="logos/nexora-n.png" alt="Nexora">
+<h1>Nexora</h1>
+<p class="sub">Sistemas que simplificam, automatizam e aceleram negócios.</p>
+<p class="tag">Menos planilha e retrabalho. Mais processo rodando sozinho.</p>
+</div></header>
+<div class="meta-bar"><div class="wrap"><span>Brand Book v1.0</span><span>Sistemas sob medida</span><span>2026</span></div></div>
+
+<section id="essencia"><div class="wrap"><div class="eyebrow"><span class="num">01</span>Essência</div>
+<hr class="accent" style="border:0"><h2>Tecnologia que some no meio da operação</h2><p class="lead">A Nexora desenvolve sistemas sob medida: apps, painéis e automações que tiram trabalho manual da rotina de pequenas e médias empresas. O produto bom é o que a equipe usa sem precisar de treinamento.</p>
+<div class="two"><div class="card is"><h3>É</h3><ul><li>Sistema feito para o processo da empresa</li><li>Simples de usar, sólido por baixo</li><li>Automação onde há repetição</li><li>Clareza sobre prazo, escopo e custo</li></ul></div><div class="card"><h3>Não é</h3><ul><li>Software genérico com a marca trocada</li><li>Complexidade para parecer sofisticado</li><li>Promessa de IA para tudo</li><li>Dependência escondida de terceiros</li></ul></div></div>
+</div></section>
+
+<section id="marca"><div class="wrap"><div class="eyebrow"><span class="num">02</span>Marca</div>
+<h2>Logo e variações</h2><p class="lead">O N é o símbolo da marca. Use sobre fundo escuro ou sobre azul sólido. Mantenha área livre igual à largura de uma perna do N e não aplique efeitos.</p><div class="logo-grid" style="margin-top:28px"><div class="logo-frame"><div class="f" style="background:#04070D"><img src="logos/nexora-n.png" alt="Símbolo sobre escuro"></div><div class="cap">Símbolo sobre escuro</div></div><div class="logo-frame"><div class="f" style="background:#0B1120"><img src="logos/nexora-n.png" alt="Símbolo sobre cartão"></div><div class="cap">Símbolo sobre cartão</div></div><div class="logo-frame"><div class="f" style="background:#1475FF"><img src="logos/nexora-n.png" alt="Símbolo sobre azul"></div><div class="cap">Símbolo sobre azul</div></div><div class="logo-frame"><div class="f" style="background:#FFFFFF"><img src="logos/nexora-n.png" alt="Símbolo sobre claro"></div><div class="cap">Símbolo sobre claro</div></div></div></div></section>
+
+<section id="cores"><div class="wrap"><div class="eyebrow"><span class="num">03</span>Cores</div>
+<h2>Paleta</h2><p class="lead">Fundo quase preto, texto branco azulado e um único azul de acento. O azul é a assinatura: aparece em botões, links e destaques, nunca como fundo inteiro de página.</p><div class="palette" style="margin-top:28px"><div class="color"><div class="chip" style="background:#04070D"></div><div class="info"><div class="name">Noite</div><div class="hex">#04070D</div><div class="role">Fundo</div></div></div><div class="color"><div class="chip" style="background:#0B1120"></div><div class="info"><div class="name">Cartão</div><div class="hex">#0B1120</div><div class="role">Superfícies</div></div></div><div class="color"><div class="chip" style="background:#1D2A45"></div><div class="info"><div class="name">Linha</div><div class="hex">#1D2A45</div><div class="role">Divisores</div></div></div><div class="color"><div class="chip" style="background:#1475FF"></div><div class="info"><div class="name">Azul Nexora</div><div class="hex">#1475FF</div><div class="role">Acento</div></div></div><div class="color"><div class="chip" style="background:#F7F9FF"></div><div class="info"><div class="name">Gelo</div><div class="hex">#F7F9FF</div><div class="role">Texto</div></div></div><div class="color"><div class="chip" style="background:#78849A"></div><div class="info"><div class="name">Cinza azulado</div><div class="hex">#78849A</div><div class="role">Texto secundário</div></div></div></div><div class="grads"><div class="grad" style="background:linear-gradient(135deg,#1475FF,#04070D)">Brilho</div><div class="grad" style="background:linear-gradient(160deg,#0B1120,#04070D)">Profundidade</div></div></div></section>
+
+<section id="tipografia"><div class="wrap"><div class="eyebrow"><span class="num">04</span>Tipografia</div>
+<h2>Tipos</h2>
+<div class="type-card"><div class="type-name"><span>Inter</span><span>Títulos, texto e interface</span></div>
+<div class="type-big display">Sistemas que <span class="o">aceleram</span></div><div class="glyphs">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789</div></div>
+<div class="type-card"><div class="type-name"><span>Inter</span><span>Texto corrido e interface</span></div>
+<p class="type-body">Texto em <b style='font-weight:600'>Inter</b> em tamanhos 14 a 18, com peso 400 para leitura e 600 a 800 para títulos.</p><div class="glyphs">abcdefghijklmnopqrstuvwxyz áéíóúãõç 0123456789</div></div>
+</div></section>
+
+<section id="voz"><div class="wrap"><div class="eyebrow"><span class="num">05</span>Voz</div>
+<h2>Como a Nexora fala</h2><p class="lead">Clara e técnica sem jargão. Explica o que o sistema faz, para quem e com quais limites. Prefere números e exemplos a adjetivos.</p>
+<div class="voice" style="margin-top:28px"><div class="card"><h3>Palavras que usamos</h3><div class="pills"><span class="pill use">processo</span><span class="pill use">automação</span><span class="pill use">painel</span><span class="pill use">prazo</span><span class="pill use">escopo</span><span class="pill use">dados</span></div></div>
+<div class="card"><h3>Evitamos</h3><ul class="avoid"><li>Travessão (— e –) no texto</li><li>Jargão sem explicação</li><li>Promessa de IA onde não há IA</li><li>Superlativos</li></ul></div></div>
+<div class="ex bad"><b>Evite</b>Uma solução revolucionária e disruptiva que transforma o seu ecossistema de negócios.</div><div class="ex"><b>Prefira</b>O painel junta os pedidos dos três canais, avisa quando o estoque acaba e fecha o dia em um relatório.</div>
+</div></section>
+
+<footer><div class="wrap"><img src="logos/nexora-n.png" alt=""><div class="fn display">Nexora</div>
+<div class="fc">nexoraos.com.br</div><div class="stamp">Brand Book v1.0 · 2026</div></div></footer>
+</body></html>
