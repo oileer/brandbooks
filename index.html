@@ -7,22 +7,22 @@
 <meta name="description" content="Portal de Brand Books dos clientes de Euller Lolato. Acesse os guias de identidade visual e diretrizes de marca.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/icon.png" type="image/png" sizes="500x500">
 <link rel="apple-touch-icon" href="/icon.png">
 <link rel="stylesheet" href="vendor/lenis.css">
 <style>
   :root {
-    --bg: #0A0A0A;
-    --bg-soft: #111111;
-    --bg-card: #141414;
-    --line: #222222;
-    --line-soft: #1a1a1a;
-    --bone: #F5F5F0;
-    --muted: #8a8a85;
-    --muted-2: #5c5c58;
-    --orange: #FF4500;
+    --bg: #F7F2ED;
+    --bg-soft: #EFE6DC;
+    --bg-card: #FFFFFF;
+    --line: #E4D7C8;
+    --line-soft: #EDE3D6;
+    --bone: #2A1B12;
+    --muted: #6B5647;
+    --muted-2: #9A8573;
+    --orange: #A64B2A;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -41,7 +41,7 @@
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
-    background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(42,27,18,0.05) 1px, transparent 1px);
     background-size: 28px 28px;
     background-attachment: fixed;
   }
@@ -88,7 +88,7 @@
     position: absolute;
     width: 600px; height: 600px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,69,0,0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(166,75,42,0.05) 0%, transparent 70%);
     top: -200px; right: -100px;
     animation: float-glow 12s ease-in-out infinite alternate;
   }
@@ -97,7 +97,7 @@
     position: absolute;
     width: 500px; height: 500px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,69,0,0.03) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(166,75,42,0.03) 0%, transparent 70%);
     bottom: -150px; left: -100px;
     animation: float-glow 15s ease-in-out infinite alternate-reverse;
   }
@@ -136,11 +136,11 @@
     50%       { opacity: 0.4; transform: scale(0.7); }
   }
   .header h1 {
-    font-family: 'Audiowide', sans-serif; font-weight: 400;
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400;
     font-size: clamp(42px, 8vw, 80px); line-height: 0.95; letter-spacing: 0.02em;
   }
   .header h1 .accent-text {
-    background: linear-gradient(135deg, var(--orange), #ff8a3d);
+    background: linear-gradient(135deg, var(--orange), #E8935A);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
   .header .subtitle {
@@ -149,7 +149,7 @@
   }
   .accent-line {
     height: 2px; width: 64px; border: 0; border-radius: 2px;
-    background: linear-gradient(90deg, var(--orange), rgba(255,69,0,0)); margin: 28px 0 0;
+    background: linear-gradient(90deg, var(--orange), rgba(166,75,42,0)); margin: 28px 0 0;
   }
 
   /* ---- Cards ---- */
@@ -164,14 +164,14 @@
   .card:nth-child(2) { animation-delay: 0.3s; }
   .card::before {
     content: ""; position: absolute; inset: 0; border-radius: 18px;
-    background: linear-gradient(135deg, rgba(255,69,0,0.04) 0%, transparent 50%);
+    background: linear-gradient(135deg, rgba(166,75,42,0.04) 0%, transparent 50%);
     opacity: 0; transition: opacity 0.4s ease;
   }
   .card:hover::before { opacity: 1; }
-  .card.active { border-color: rgba(255,69,0,0.25); cursor: pointer; }
+  .card.active { border-color: rgba(166,75,42,0.25); cursor: pointer; }
   .card.active:hover {
-    border-color: rgba(255,69,0,0.5); transform: translateY(-4px);
-    box-shadow: 0 8px 32px rgba(255,69,0,0.08), 0 2px 8px rgba(0,0,0,0.4);
+    border-color: rgba(166,75,42,0.5); transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(166,75,42,0.08), 0 2px 8px rgba(0,0,0,0.4);
   }
   .card.coming-soon { opacity: 0.45; cursor: default; }
   .card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px; }
@@ -181,20 +181,20 @@
     justify-content: center; overflow: hidden;
   }
   .card-logo img { width: 80%; height: 80%; object-fit: contain; }
-  .card-logo .placeholder-icon { font-family: 'Audiowide', sans-serif; font-size: 18px; color: var(--muted-2); }
+  .card-logo .placeholder-icon { font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; color: var(--muted-2); }
   .badge {
     font-size: 10px; font-weight: 600; letter-spacing: 0.16em;
     text-transform: uppercase; padding: 5px 12px; border-radius: 999px; white-space: nowrap;
   }
-  .badge.live { background: rgba(255,69,0,0.12); color: var(--orange); border: 1px solid rgba(255,69,0,0.2); }
-  .badge.soon { background: rgba(138,138,133,0.08); color: var(--muted-2); border: 1px solid var(--line); }
-  .card-name { font-family: 'Audiowide', sans-serif; font-size: 22px; font-weight: 400; margin-bottom: 8px; }
+  .badge.live { background: rgba(166,75,42,0.12); color: var(--orange); border: 1px solid rgba(166,75,42,0.2); }
+  .badge.soon { background: rgba(107,86,71,0.08); color: var(--muted-2); border: 1px solid var(--line); }
+  .card-name { font-family: 'Bricolage Grotesque', sans-serif; font-size: 22px; font-weight: 400; margin-bottom: 8px; }
   .card-desc { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 24px; }
   .card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; border-top: 1px solid var(--line-soft); }
   .card-meta { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted-2); }
   .card-arrow {
     width: 32px; height: 32px; border-radius: 50%;
-    background: rgba(255,69,0,0.08); border: 1px solid rgba(255,69,0,0.15);
+    background: rgba(166,75,42,0.08); border: 1px solid rgba(166,75,42,0.15);
     display: flex; align-items: center; justify-content: center;
     transition: all 0.3s ease; color: var(--orange); font-size: 14px;
   }
@@ -212,14 +212,14 @@
   .btn {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 12px 20px; border-radius: 8px;
-    font-family: 'Audiowide', sans-serif; font-size: 11px; font-weight: 400;
+    font-family: 'Bricolage Grotesque', sans-serif; font-size: 11px; font-weight: 400;
     letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
     transition: transform 0.15s, opacity 0.15s, border-color 0.2s; cursor: pointer;
   }
   .btn:hover { transform: translateY(-2px); opacity: 0.88; }
   .btn-primary { background: var(--orange); color: #fff; border: 1px solid var(--orange); }
   .btn-secondary { background: transparent; color: var(--bone); border: 1px solid var(--line); }
-  .btn-secondary:hover { border-color: rgba(255,69,0,0.4); opacity: 1; }
+  .btn-secondary:hover { border-color: rgba(166,75,42,0.4); opacity: 1; }
   .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--line); }
   .btn-ghost:hover { color: var(--bone); opacity: 1; }
 
